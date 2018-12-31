@@ -8,7 +8,7 @@
 <itunes:subtitle>Subtitle of podcast</itunes:subtitle>
 <itunes:author>(:author.prenom:)</itunes:author>
 <link>http://www.zecastpod.postite.com</link>
-<itunes:summary>Description of podcast.</itunes:summary>
+<itunes:summary>from niece to uncle</itunes:summary>
 <description>Description of podcast.</description>
 <itunes:owner>
     <itunes:name>(:author.prenom:)</itunes:name>

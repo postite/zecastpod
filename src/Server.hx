@@ -97,7 +97,7 @@ class Root {
 		var t = rss.rssTemplate();
 		sys.io.File.saveContent("./rss.rss", t);
 		#end
-		var t = rss.rssTemplate().toString();
+		var t = rss.render().toString();
 		return OutgoingResponse.blob(OK, t, 'application/xml');
 	}
 

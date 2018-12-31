@@ -60,6 +60,7 @@ public var items:Array<PodRssItem>;
     
     items = new Array();
   }
-  @:template public function rssTemplate();// <---- this bit is new!
+@:template("views/rssTemplate.tt")
+public function render();// <---- this bit is new!
 }
 
