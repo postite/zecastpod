@@ -1,5 +1,6 @@
 --connect 6010 
 -cp src
+-cp configPrivate
 -D analyzer-optimize
 #-lib hxnodejs
 -lib tink_http

@@ -17,6 +17,11 @@ typedef PodOwner={
     name:String,
     mail:String,
 }
+typedef Author={
+    prenom:String,
+    nom:String,
+    mail:String
+}
 typedef PodRssItem={
     ?id:Int,
     ?title:String,
@@ -43,7 +48,7 @@ public var title:String;
 public var url:String;
 public var langage:String;
 public var subtitles:String;
-public var authoe:String;
+public var author:Author;
 public var summary:String;
 public var description:String;
 public var owner:String;

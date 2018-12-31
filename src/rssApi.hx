@@ -1,3 +1,4 @@
+import Credits.*;
 class RssApi {
     
 	public function new() {}
@@ -18,10 +19,11 @@ class RssApi {
 			item.title = it.title;
 			item.description = it.desc;
 			item.permalink = '$baseUrl/pod/'+it.id;
-			item.author = "zelote@postite.com (zel kert)";
+			item.author = '$mail ($prenom $nom)';
 			item.duration = "00:32:16";
             item.image='$baseUrl/${it.imageUrl}';
 			item.explicit = "no";
+
 			item.sound = {
 				url: '$baseUrl/${it.soundUrl}',
 				length: it.length,
@@ -36,6 +38,7 @@ class RssApi {
 		});
         rss.logo="$baseUrl/logo.png";
 		rss.title = "zecastpod";
+		rss.author ={nom:Credits.nom,prenom:Credits.prenom,mail:Credits.mail};
 		return rss;
 	}
 }

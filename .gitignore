@@ -1,4 +1,5 @@
 *.mp3
-#*.jpg
+/www/statics/*.jpg
 /www/lib
 /matos
+/configPrivate

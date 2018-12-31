@@ -55,7 +55,7 @@ class Root {
 
 	@:get('/')
 	public function hello():tink.template.Html {
-		Layout.header = views.HeaderHome.render();
+	//	Layout.header = views.HeaderHome.render();
 		return views.Home.render().withLayout();
 	}
 
