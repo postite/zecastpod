@@ -1,0 +1,23 @@
+{
+    "haxe.displayConfigurations": [
+        ["server.hxml"]
+    ],
+
+    
+   
+        "sync-rsync.exclude": [
+            ".git",
+            ".vscode",
+            "dabase.db",
+            ".mp3",
+            ".jpg",
+            ".png"
+            
+        ],
+        "sync-rsync.delete": false,
+        "sync-rsync.local": "www/",
+        
+        "sync-rsync.remote": "postite@ssh-postite.alwaysdata.net:zecastpod/",
+        "sync-rsync.autoShowOutput": true
+    
+}

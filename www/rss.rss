@@ -1,0 +1,74 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"   version="2.0">
+<channel>
+
+<title>zecastpod</title>
+<language>fr-fr</language>
+<itunes:subtitle>Subtitle of podcast</itunes:subtitle>
+<itunes:author>zelote</itunes:author>
+<link>http://www.zecastpod.postite.com</link>
+<itunes:summary>Description of podcast.</itunes:summary>
+<description>Description of podcast.</description>
+<itunes:owner>
+    <itunes:name>zélote</itunes:name>
+    <itunes:email>zelote@postite.com</itunes:email>
+</itunes:owner>
+<itunes:explicit>no</itunes:explicit>
+<itunes:image href="$baseUrl/logo.png" />
+<itunes:category text="Kids &amp; Family"/> 
+
+     
+    <item>
+      <title>  oupchaki</title>
+      <itunes:summary>  tagadak </itunes:summary>
+        <description><![CDATA[<img src="http://zecastpod.local/exos.png"/>  tagadak ]]></description>
+      
+      <enclosure url="http://zecastpod.local/059-Miley_Cyrus_Party_in_the_U.S.A._(Wideboys_Radio_Edit).mp3" type="audio/mpeg" length="4601711"></enclosure>
+      <pubDate>Fri, 28 Dec 2018 10:44:39 +0100</pubDate>
+
+        <author>
+        zelote@postite.com (zel kert)
+        </author>
+        <itunes:duration>00:32:16</itunes:duration>
+        <itunes:explicit>no</itunes:explicit>
+      <guid>http://zecastpod.local/pod/2</guid>
+      
+    </item>
+     
+    <item>
+      <title>jhdjhjdhsqjdhk</title>
+      <itunes:summary>jackson fiveeeeeee</itunes:summary>
+        <description><![CDATA[<img src="http://zecastpod.local/museum_dark_good.jpg"/>jackson fiveeeeeee]]></description>
+      
+      <enclosure url="http://zecastpod.local/072-The_Jacksons_Blame_It_on_the_Boogie.mp3" type="audio/mpeg" length="5182866"></enclosure>
+      <pubDate>Fri, 28 Dec 2018 07:57:59 +0100</pubDate>
+
+        <author>
+        zelote@postite.com (zel kert)
+        </author>
+        <itunes:duration>00:32:16</itunes:duration>
+        <itunes:explicit>no</itunes:explicit>
+      <guid>http://zecastpod.local/pod/3</guid>
+      
+    </item>
+     
+    <item>
+      <title>jhdhsq</title>
+      <itunes:summary>sqdqsdqsdsqd</itunes:summary>
+        <description><![CDATA[<img src="http://zecastpod.local/generation.png"/>sqdqsdqsdsqd]]></description>
+      
+      <enclosure url="http://zecastpod.local/038_Anna_Kendrick_Cups__Pitch_Perfect___s____When_I___m_Gone____.mp3" type="audio/mpeg" length="0"></enclosure>
+      <pubDate>Fri, 28 Dec 2018 05:11:19 +0100</pubDate>
+
+        <author>
+        zelote@postite.com (zel kert)
+        </author>
+        <itunes:duration>00:32:16</itunes:duration>
+        <itunes:explicit>no</itunes:explicit>
+      <guid>http://zecastpod.local/pod/4</guid>
+      
+    </item>
+    
+</channel>
+</rss>

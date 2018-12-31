@@ -1,0 +1,22 @@
+body{
+    background-color: rgb(238 ,224, 166);
+    font-size: 33px;
+}
+.maincontainer{
+    margin-top: 1em;
+    display:flex;
+}
+.container{
+    width:400px;
+    margin: auto;
+}
+#noyeux{
+    /* position: absolute; */
+    margin-left:-200px;
+}
+.item-image{
+    max-width:200px;
+}
+#podpage img#logo{
+    display:none;
+}

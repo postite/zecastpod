@@ -1,0 +1,23 @@
+   (: static function render(?nav:Iterable<Dynamic>) :)
+   <h1>ZECASTPOD</h1>
+    <div class="ui vertical menu">
+    (: for it in nav :)
+        <a class="item" href="(:it.url:)">
+          <h4 class="ui header">(:it.title:)</h4>
+          <p>(:it.description:)</p>
+        </a>
+      (:end:)
+        <a class="item" href="/up">
+          <h4 class="ui header">Upload</h4>
+          <p>ajouter du contenu</p>
+        </a>
+        <a class="item" href="/viewrss">
+          <h4 class="ui header">view rss</h4>
+          <p>back home</p>
+        </a>
+        <a class="item" href="/">
+          <h4 class="ui header">home</h4>
+          <p>back home</p>
+        </a>
+      </div>
+    (:end :)

@@ -1,0 +1,15 @@
+-cp src
+-D analyzer-optimize
+-lib hxnodejs
+-lib tink_http
+-lib tink_http_middleware
+-lib tink_web
+-lib tink_template
+-lib tink_multipart
+#-lib tink_sql
+-lib hx3compat
+-lib record-macros
+-main Server
+-js www/server.js
+#-cmd open -a safari http://localhost:8080
+

@@ -1,0 +1,11 @@
+--connect 6010 
+-cp src
+-dce full
+-lib tink_http
+-lib jQueryExtern
+-lib tink_web
+-main Client
+-js www/statics/client.js
+
+
+--times

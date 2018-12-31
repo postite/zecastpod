@@ -1,0 +1,9 @@
+<div>
+    <h4>(:rec.title:)</h4>
+    <img class="item-image" src="/(:rec.imageUrl:)"/>
+    <audio controls>
+        <source src="/(:rec.soundUrl:)" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio> 
+    <p>(:rec.desc:)</p>
+</div>

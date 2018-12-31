@@ -1,0 +1,40 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"   version="2.0">
+<channel>
+
+<title>(:title:)</title>
+<language>fr-fr</language>
+<itunes:subtitle>Subtitle of podcast</itunes:subtitle>
+<itunes:author>zelote</itunes:author>
+<link>http://www.zecastpod.postite.com</link>
+<itunes:summary>Description of podcast.</itunes:summary>
+<description>Description of podcast.</description>
+<itunes:owner>
+    <itunes:name>zélote</itunes:name>
+    <itunes:email>zelote@postite.com</itunes:email>
+</itunes:owner>
+<itunes:explicit>no</itunes:explicit>
+<itunes:image href="(: logo :)" />
+<itunes:category text="Kids &amp; Family"/> 
+
+    (: for item in items :) 
+    <item>
+      <title>(: item.title :)</title>
+      <itunes:summary>(:item.description :)</itunes:summary>
+        <description><![CDATA[<img src="(:item.image:)"/>(:item.description:)]]></description>
+      
+      <enclosure url="(:item.sound.url:)" type="(:item.sound.type:)" length="(:item.sound.length:)"></enclosure>
+      <pubDate>(: item.date :)</pubDate>
+
+        <author>
+        (: item.author :)
+        </author>
+        <itunes:duration>(:item.duration :)</itunes:duration>
+        <itunes:explicit>(:item.explicit:)</itunes:explicit>
+      <guid>(: item.permalink :)</guid>
+      
+    </item>
+    (: end :)
+</channel>
+</rss>

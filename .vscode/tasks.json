@@ -1,0 +1,49 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "launch",
+            "command": "open",
+            "args": [
+                "-a",
+                "safari",
+                //"http://localhost:8080/"
+                "http://zecastpod.local/"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+            ,"dependsOn":
+                [
+                 "buildClient",
+                "buildPhpServer"
+                
+                ]
+            },
+            {
+                "label": "buildPhpServer",
+                "command": "haxe",
+                "args": [
+                    "serverphp.hxml"
+                ]
+            },
+            {
+                "label": "buildNodeServer",
+                "command": "haxe",
+                "args": [
+                    "server.hxml"
+                ]
+            },
+            {
+                "label": "buildClient",
+                "command": "haxe",
+                "args": [
+                    "client.hxml"
+                ]
+            }   
+        
+    ]
+}

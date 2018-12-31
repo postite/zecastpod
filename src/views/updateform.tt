@@ -1,0 +1,39 @@
+
+<h2>(: note :)</h2>
+    <form class="ui form segment" action=" (:if !mod :)/filesRec(:else:)/filesUpdate(:end:)" method="post" enctype="multipart/form-data">
+        (:if mod:)<input type="hidden" name="id" value="(:rec.id:)"/>(:end:)
+
+          <div class="field">
+            <label>Sound</label>
+            (: if mod :)
+            <p>(:rec.soundUrl:)</p>
+            <audio controls>
+        <source src="/(:rec.soundUrl:)" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+         (:end:)
+            <input name="fileToUpload" id="file-input" type="file" value="(:if mod :) (:rec.soundUrl:) (:else:)  (:end:) "/>
+          </div>
+          <div class="field">
+            <label>image</label>
+                (: if mod :)
+                <p>(:rec.imageUrl:)</p>
+                <img class="item-image" src="/(:rec.imageUrl:)"/>
+                (:end:)
+            <input name="imgToUpload" id="image-input" type="file" value="(:if mod :) (:rec.imageUrl:) (:else:)  (:end:)"/>
+          </div>
+          <div class="field">
+            <label>titre</label>
+            <input type="text" name="title" value="(:if mod :) (:rec.title:) (:else:)  (:end:)"/>
+          </div>
+          <div class="field">
+            <label>description</label>
+            <textarea type="text" name="desc" >(:if mod :) (:rec.desc:) (:else:)  (:end:)</textarea>
+          </div>
+        <button class="ui button" type="submit">Submit</button>
+        <div class="ui error message">
+        </div>
+      </form>
+      (:if mod :)
+      <a href="/delete/(:rec.id:)" class="ui button" >suppr</a>
+      (:end:)

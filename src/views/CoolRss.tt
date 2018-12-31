@@ -1,0 +1,10 @@
+(:static function render(rss:Rss):)
+(: for item in rss.items :)
+    <div class="item">
+        <a href="/pod/(:item.id:)"><h4>(: item.title :)</h4></a>
+        <img class="item-image" src="(:item.image:)" />
+        <p>(:item.description:)</p>
+        <div class="modif"><a href="/modif/(:item.id:)">x</a></div>
+    </div>
+(: end :)
+(: end :)
