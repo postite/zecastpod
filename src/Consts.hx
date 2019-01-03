@@ -8,8 +8,11 @@ class Consts{
     public static var baseUrl(get,never):String;
 
     public static function get_baseUrl():String{
+        
         #if php
         return 'http://'+php.Web.getHostName();
+        #elseif js
+        return js.Browser.window.location.host;
         #end
 
     }

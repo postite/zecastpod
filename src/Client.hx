@@ -3,14 +3,19 @@ import js.jquery.Helper;
 
 class Client {
 	
-
 	function new(){
-		trace( "hello");
+		trace( "hello" + Date.now());
 	}
 
 
-	static function main() {
+	static function main(){
+
 		new Client();
+
+	}
+
+	public function execute(){
+		trace("execute");
 	}
 
 }

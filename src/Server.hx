@@ -49,7 +49,7 @@ class Root {
 			title: "abonne toi",
 			description: "le flux rss du podcast"
 		}];
-		Layout.menu = views.Hello.render(nav).withLayout();
+		Layout.menu = views.Hello.render(nav);
 		Layout.header = views.Header.render();
 	}
 
