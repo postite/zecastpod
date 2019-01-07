@@ -5,9 +5,10 @@ class DBApi{
    static var cnx;
    static var _instance:DBApi;
     public function new(){
-      // createFile();
-      //deleteTable(Rec);
-      //init();
+      
+     // deleteTable(Rec);
+      //createFile();
+     // init();
     }
     public static var instance(get,never):DBApi;
 
