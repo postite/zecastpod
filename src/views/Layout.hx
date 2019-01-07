@@ -1,34 +1,60 @@
 package views;
 import tink.template.Html;
 using Lambda;
+
+
 class Layout{
 
-    static var viewContent:tink.template.Html;
+    var viewContent:tink.template.Html;
    
-    public static var footer:Html;
-    public static var header:Html;
-    public static var head:Html;
-    public static var menu:Html;
-    public static var id:String;
-    public static var scripts:Array<String>=[];
+    public  var footer:Html;
+    public  var header:Html;
+    public  var head:Html;
+    public  var menu:Html;
+    public  var id:String;
+    public  var scripts:Array<String>=[];
+   
 
-    public static function withLayout(v:tink.template.Html,?contentid="layout"){
-        init();
-        viewContent=v;
-        id=contentid;
-        return render();
+    static var _instance:Layout;
+
+    static public var instance(get,never):Layout;
+
+    static public function get_instance():Layout{
+        if (_instance==null)
+            _instance = new Layout();
+        return _instance;
     }
 
-    public function addScript(script:String){
+    public function new(){}
+
+    public static function withLayout(v:tink.template.Html,?contentid="layout"):Layout{
+
+        Layout.instance.init();
+        Layout.instance.viewContent=v;
+        Layout.instance.id=contentid;
+        return Layout.instance;
+
+    }
+
+    public function addScript(script:String):Layout{
        
         if ( !scripts.has(script) )
             scripts.push(script);
+            return this;
+
+    }
+    public function addAct(actions:String):Layout{
+
+        head=views.Head.render(scripts,actions);
+        return this;
+
     }
 
-    public static function init(){
-        head=views.Head.render(scripts);
+    public function init():Layout{
+        head=views.Head.render(scripts,null);
+        return this;
     } 
 
     @:template("layout.tt")
-    public static function render();
+    public  function render();
 }

@@ -31,9 +31,9 @@ class RssApi {
 			}
 
 			var date = Date.now();
-			date = DateTools.delta(date, -10000000 * counter);
+			//date = DateTools.delta(date, -10000000 * counter);
 			item.date = DateTools.format(date, '${days[date.getDay()]}, %d ${months[date.getMonth()]} %Y %H:%M:%S +0100');
-			counter = counter + 1;
+			//counter = counter + 1;
 			rss.items.push(item);
 		});
         rss.logo="$baseUrl/logo.png";

@@ -7,8 +7,7 @@ class DBApi{
     public function new(){
       // createFile();
       //deleteTable(Rec);
-     // init();
-
+      //init();
     }
     public static var instance(get,never):DBApi;
 

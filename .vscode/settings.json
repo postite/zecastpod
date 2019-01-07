@@ -9,13 +9,13 @@
             ".git",
             ".vscode",
             "dabase.db",
-            ".mp3",
-            ".jpg",
-            ".png"
+            "*.mp3",
+            "*.jpg",
+            "*.png"
             
         ],
         "sync-rsync.delete": false,
-        "sync-rsync.local": "www/",
+        "sync-rsync.local": "/Users/ut/Documents/LAB/zecastpod/www/",
         
         "sync-rsync.remote": "postite@ssh-postite.alwaysdata.net:zecastpod/",
         "sync-rsync.autoShowOutput": true

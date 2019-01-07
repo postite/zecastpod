@@ -1,0 +1,3 @@
+-D dbadmin=1.1.0
+# @install: lix --silent download "haxelib:/dbadmin#1.1.0" into dbadmin/1.1.0/haxelib
+-cp ${HAXE_LIBCACHE}/dbadmin/1.1.0/haxelib/

@@ -1,6 +1,7 @@
 --connect 6010 
 -cp src
 -dce full
+-lib compiletime
 -lib tink_http
 -lib jQueryExtern
 -lib tink_web

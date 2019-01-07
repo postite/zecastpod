@@ -14,9 +14,9 @@ import sys.FileSystem;
 
 using tink.io.Source;
 using views.Layout;
-
+using Actor;
 import views.UpView;
-
+import command.*;
 using Tools;
 
 class Server {
@@ -43,21 +43,26 @@ class Root {
 		rssApi = new RssApi();
 
 		dbApi = DBApi.init();
-		Layout.footer = views.Footer.render();
+		Layout.instance.footer = views.Footer.render();
 		var nav = [{
 			url: "/rss",
 			title: "abonne toi",
 			description: "le flux rss du podcast"
 		}];
-		Layout.menu = views.Hello.render(nav);
-		Layout.header = views.Header.render();
+		Layout.instance.menu = views.Hello.render(nav);
+		Layout.instance.header = views.Header.render();
 	}
 
 	@:get('/')
 	public function hello():tink.template.Html {
 	//	Layout.header = views.HeaderHome.render();
-		return views.Home.render().withLayout();
+		return views.Home.render().withLayout().addAction(MyCommand).addAction(MyCommand2,"bingo").render();
 	}
+
+	// @:get("/db")
+	// public function db(){
+	// 	sys.db.Admin.handler();
+	// }
 
 	@:get('/cook')
 	public function cook() {
@@ -74,13 +79,13 @@ class Root {
 		var rss = rssApi.getRss();
 
 		var t = views.Coolrss.render(rss);
-		return t.withLayout();
+		return t.withLayout().addAction(MyCommand2).render();
 	}
 
 	@:get('/modif/$id')
 	public function modif(id:Int) {
 		var rec = dbApi.get(id);
-		return new views.UpdateView(rec).form().withLayout();
+		return new views.UpdateView(rec).form().withLayout().render();
 	}
 
 	@:get('/delete/$id')
@@ -106,21 +111,21 @@ class Root {
 	public function up(?status:String,?id:Int) {
 		if( id !=null){
 			var rec= dbApi.get(id);
-			return new views.UpView(status,rec).form().withLayout();
+			return new views.UpView(status,rec).form().withLayout().render();
 		}
-		return new views.UpView(status).form().withLayout();
+		return new views.UpView(status).form().withLayout().render();
 	}
 
 	@:get('/pod/$id')
 	public function podId(id:Int) {
 		var sound = dbApi.get(id);
-		return new views.PodPage(sound).render().withLayout("podpage");
+		return new views.PodPage(sound).render().withLayout("podpage").render();
 	}
 
 	@:post
 	public function filesRec(body:{
 		fileToUpload:FormFile,
-		imgToUpload:FormFile,
+		?imgToUpload:Null<FormFile>,
 		desc:String,
 		title:String
 	}) {
@@ -140,7 +145,7 @@ class Root {
 	public function filesUpdate(body:{
         id:Int,
 		fileToUpload:Null<FormFile>,
-		imgToUpload:Null<FormFile>,
+		?imgToUpload:Null<FormFile>,
 		desc:String,
 		title:String
 	}) {

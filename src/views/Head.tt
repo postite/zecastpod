@@ -1,4 +1,4 @@
-(: static function render(scripts:Array<String>) :)
+(: static function render(scripts:Array<String>,actions:String) :)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,12 @@
     (:for scr in scripts:)
     <script src="(:scr:)"></script>
     (:end :)
+    <script>
+    
+    var actions=
+    "(: actions:)";
+    
+    </script>
     <link rel="stylesheet" href="/style.css">
     <script src="/client.js"></script>
 </head>
