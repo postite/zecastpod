@@ -59,18 +59,38 @@ class Root {
 		return views.Home.render().withLayout().addAction(MyCommand).addAction(MyCommand2,"bingo").render();
 	}
 
-	// @:get("/db")
-	// public function db(){
-	// 	sys.db.Admin.handler();
-	// }
+	@:get('/dbinit')
+	public function db():Bool{
+		DBApi.init();
+		return true;
+	}
+	@:get('/json')
+	public function json():String{
+		return rssApi.getJson();
+	}
+	@:get('/backup')
+	public function fromjson(){
+		return dbApi.fromJson("/json")
+		//.next(p->StringTools.urlDecode(p))
+		//.next(p->{var t=haxe.Json.parse(p);
+		//return t;
+		//})
+		.next(z->asys.io.File.saveContent("backjson.json",z));
+		
+	}
+	@:get('/restore')
+	public function restore(){
+		return asys.io.File.getContent("backjson.json")
+		.next(c->dbApi.recsfromJson(c));
+		
+	}
+	
 
 	@:get('/cook')
 	public function cook() {
 		var a:OutgoingResponse = "aaaaa";
 		var b = tink.http.Header.HeaderField.setCookie("popo", "papa", null);
 		a.header.concat([b]);
-
-
 		return a;
 	}
 

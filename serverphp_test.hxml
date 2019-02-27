@@ -1,0 +1,22 @@
+#--connect 6010 
+-cp src
+-cp configPrivate
+-D analyzer-optimize
+
+#-lib hxnodejs
+#-lib tink_http
+#-lib tink_http_middleware
+#-lib tink_web
+#-lib tink_template
+#-lib tink_multipart
+-D haxeJSON
+#-lib tink_sql
+#-lib hx3compat
+#-lib record-macros
+-main PhpTest
+-php www/
+#--times
+#--interp
+
+#-cmd open -a safari http://localhost:8080
+

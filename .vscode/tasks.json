@@ -9,41 +9,46 @@
             "args": [
                 "-a",
                 "safari",
-                //"http://localhost:8080/"
                 "http://zecastpod.local/"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
-            ,"dependsOn":
-                [
-                 "buildClient",
+            },
+            "dependsOn": [
                 "buildPhpServer"
-                
-                ]
-            },
-            {
-                "label": "buildPhpServer",
-                "command": "haxe",
-                "args": [
-                    "serverphp.hxml"
-                ]
-            },
-            {
-                "label": "buildNodeServer",
-                "command": "haxe",
-                "args": [
-                    "server.hxml"
-                ]
-            },
-            {
-                "label": "buildClient",
-                "command": "haxe",
-                "args": [
-                    "client.hxml"
-                ]
-            }   
-        
+            ]
+        },
+        {
+            "label": "buildPhpServer",
+            "command": "haxe",
+            "args": [
+                "serverphp.hxml"
+            ]
+        },
+        {
+            "label": "buildNodeServer",
+            "command": "haxe",
+            "args": [
+                "server.hxml"
+            ]
+        },
+        {
+            "label": "buildClient",
+            "command": "haxe",
+            "args": [
+                "client.hxml"
+            ]
+        },
+        {
+            "type": "hxml",
+            "file": "serverphp_test.hxml",
+            "problemMatcher": [
+                "$haxe-absolute",
+                "$haxe",
+                "$haxe-error",
+                "$haxe-trace"
+            ]
+        }
     ]
 }

@@ -1,4 +1,4 @@
---connect 6010 
+#--connect 6010 
 -cp src
 -cp configPrivate
 -D analyzer-optimize

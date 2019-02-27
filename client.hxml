@@ -1,4 +1,4 @@
---connect 6010 
+
 -cp src
 -dce full
 -lib compiletime
