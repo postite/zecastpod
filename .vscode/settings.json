@@ -9,7 +9,7 @@
             ".git",
             ".vscode",
             "dabase.db",
-           
+            "dibase.db",
             "*.mp3",
             "*.jpg",
             "*.png"
