@@ -41,13 +41,10 @@
             ]
         },
         {
-            "type": "hxml",
-            "file": "serverphp_test.hxml",
-            "problemMatcher": [
-                "$haxe-absolute",
-                "$haxe",
-                "$haxe-error",
-                "$haxe-trace"
+            "label": "testImage",
+            "command": "haxe",
+            "args": [
+                "testImage.hxml"
             ]
         }
     ]

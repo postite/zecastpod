@@ -1,7 +1,7 @@
 <?php
 use \haxe\EntryPoint;
 
-set_include_path(get_include_path().PATH_SEPARATOR.__DIR__.'/lib');
+set_include_path(__DIR__.'/lib');
 spl_autoload_register(
 	function($class){
 		$file = stream_resolve_include_path(str_replace('\\', '/', $class) .'.php');

@@ -1,0 +1,5 @@
+-D image=0.1.1
+# @install: lix --silent download "gh://github.com/benmerckx/image#684da0fb40c4972d2066138501ad655198785780" into image/0.1.1/github/684da0fb40c4972d2066138501ad655198785780
+-lib tink_core
+-lib asys
+-cp ${HAXE_LIBCACHE}/image/0.1.1/github/684da0fb40c4972d2066138501ad655198785780/src

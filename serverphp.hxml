@@ -10,6 +10,7 @@
 -lib tink_multipart
 -lib dbAdmin
 #-lib tink_sql
+-lib image
 -lib hx3compat
 -lib record-macros
 -main Server

@@ -6,6 +6,8 @@ typedef JsonRss={
 }
 
 class DBApi{
+
+    static final  sqlFileName="dibase.db";
    static var cnx:sys.db.Connection;
    static var _instance:DBApi;
     public function new(){
@@ -13,6 +15,7 @@ class DBApi{
      // deleteTable(Rec);
       //createFile();
      // init();
+
     }
     public static var instance(get,never):DBApi;
 
@@ -31,21 +34,7 @@ class DBApi{
         Rec.manager.get(id).delete();
     }
 
-    public function getasJson():String{
-       return haxe.Json.stringify( Rec.manager.all());
-    }
-    public function fromJson(s:String):Promise<String>{
-        return tink.http.Fetch.fetch(s).all().next(res->{
-            var str = res.body.toString();
-            return str;
-        })
-        .next(s->{
-        //var t=haxe.Json.parse(s);
-        //return t.items[0].title;
-        //return {items:[]};
-        return s;
-        });   
-    }
+    
     
     public function saveRec(filename,title,desc,length,img):Promise<Int>{
         var rec=new Rec();
@@ -85,12 +74,13 @@ class DBApi{
 
     static public function deleteTable(m:Class<sys.db.Object>){
         var manager= Reflect.field(m,"manager");
-		cnx.request('DROP TABLE ${manager.dbInfos().name}');
+		cnx.request('DROP TABLE '+manager.dbInfos().name);
 	}
 
 	static public function createFile(){
-		sys.io.File.saveContent("./dabase.db","");
+		sys.io.File.saveContent('./$sqlFileName',"");
 	}
+
     // static function duplicateTable(){
     //     var manager= Reflect.field(m,"manager");
     //     var tablename:String=manager.dbInfos().name;
@@ -98,11 +88,23 @@ class DBApi{
         
     // }
 
-    // public static function deleteTable(){
-    //     var manager= Reflect.field(m,"manager");
-    //     var tablename:String=manager.dbInfos().name;
-    //     cnx.request('DROP TABLE ${tablename}');
-    // }
+    
+
+    public function getasJson():String{
+       return haxe.Json.stringify( Rec.manager.all());
+    }
+    public function fromJson(s:String):Promise<String>{
+        return tink.http.Fetch.fetch(s).all().next(res->{
+            var str = res.body.toString();
+            return str;
+        })
+        .next(s->{
+        //var t=haxe.Json.parse(s);
+        //return t.items[0].title;
+        //return {items:[]};
+        return s;
+        });   
+    }
 
     public function recsfromJson(a:String){
         var json:JsonRss= haxe.Json.parse(a);
@@ -122,7 +124,7 @@ class DBApi{
     }
 
     public static function init(){
-    cnx = Sqlite.open("dibase.db");
+    cnx = Sqlite.open(sqlFileName);
 		sys.db.Manager.cnx = cnx;
 
 	

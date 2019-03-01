@@ -12,12 +12,11 @@ import tink.web.forms.FormFile;
 // import api.IRoot;
 import sys.FileSystem;
 
-using tink.io.Source;
 using views.Layout;
 using Actor;
+
 import views.UpView;
 import command.*;
-using Tools;
 
 class Server {
 	static function main() {
@@ -55,36 +54,35 @@ class Root {
 
 	@:get('/')
 	public function hello():tink.template.Html {
-	//	Layout.header = views.HeaderHome.render();
-		return views.Home.render().withLayout().addAction(MyCommand).addAction(MyCommand2,"bingo").render();
+		//	Layout.header = views.HeaderHome.render();
+		return views.Home.render()
+			.withLayout()
+			.addAction(MyCommand)
+			.addAction(MyCommand2, "bingo")
+			.render();
 	}
 
 	@:get('/dbinit')
-	public function db():Bool{
+	public function db():Bool {
 		DBApi.init();
 		return true;
 	}
+
 	@:get('/json')
-	public function json():String{
+	public function json():String {
 		return rssApi.getJson();
 	}
+
 	@:get('/backup')
-	public function fromjson(){
-		return dbApi.fromJson("/json")
-		//.next(p->StringTools.urlDecode(p))
-		//.next(p->{var t=haxe.Json.parse(p);
-		//return t;
-		//})
-		.next(z->asys.io.File.saveContent("backjson.json",z));
-		
+	public function fromjson() {
+		return dbApi.fromJson("/json").next(z -> asys.io.File.saveContent("backjson.json", z));
+
 	}
+
 	@:get('/restore')
-	public function restore(){
-		return asys.io.File.getContent("backjson.json")
-		.next(c->dbApi.recsfromJson(c));
-		
+	public function restore() {
+		return asys.io.File.getContent("backjson.json").next(c -> dbApi.recsfromJson(c));
 	}
-	
 
 	@:get('/cook')
 	public function cook() {
@@ -114,7 +112,7 @@ class Root {
 		return getRssView();
 	}
 
-	@:produces('application/xml')//that line does nothing raise issue on tink_web ?
+	@:produces('application/xml') // that line does nothing raise issue on tink_web ?
 	@:get('/rss')
 	public function getRss() {
 		var rss = rssApi.getRss();
@@ -128,10 +126,10 @@ class Root {
 
 	@:get('/up')
 	@:get('/up/$status/$id')
-	public function up(?status:String,?id:Int) {
-		if( id !=null){
-			var rec= dbApi.get(id);
-			return new views.UpView(status,rec).form().withLayout().render();
+	public function up(?status:String, ?id:Int) {
+		if (id != null) {
+			var rec = dbApi.get(id);
+			return new views.UpView(status, rec).form().withLayout().render();
 		}
 		return new views.UpView(status).form().withLayout().render();
 	}
@@ -149,71 +147,43 @@ class Root {
 		desc:String,
 		title:String
 	}) {
-		return saveSound(body.fileToUpload).next(function(sound) return saveImg(body.imgToUpload)
-			.next(img -> {sound: sound, img: img}))
+		return FileApi.saveSound(body.fileToUpload)
+			.next(function(sound) return FileApi.saveImg(body.imgToUpload)
+				.next(img -> {sound: sound, img: img}))
 			.next(arg -> recData(arg.sound.name, body.title, body.desc, arg.sound.length, arg.img.name)
-				.next(i -> up(cool,i))
-			).recover(name -> {
-					up(pasCool);
-					return null;
-				} // throw 'upload $name failed'
+				.next(i -> up(cool, i)))
+			.recover(name -> {
+				up(pasCool);
+				return null;
+			} // throw 'upload $name failed'
 			);
-
 	}
 
 	@:post
 	public function filesUpdate(body:{
-        id:Int,
+		id:Int,
 		fileToUpload:Null<FormFile>,
 		?imgToUpload:Null<FormFile>,
 		desc:String,
 		title:String
 	}) {
-		return saveSound(body.fileToUpload)
-			.next(function(sound) 
-				return saveImg(body.imgToUpload)
+		return FileApi.saveSound(body.fileToUpload)
+			.next(function(sound) return FileApi.saveImg(body.imgToUpload)
 				.next(img -> {sound: sound, img: img}))
-				.next(arg -> updateData(body.id,arg.sound.name, body.title, body.desc, arg.sound.length, arg.img.name)
-					.next(i -> up(cool,i))
-				).recover(name -> {
-					up(pasCool);
-					return null;
-				} // throw 'upload $name failed'
-				);
-
-	}
-
-	function saveImg(img:Null<FormFile>):Promise<{name:String}> {
-		if (img != null)
-			return img.read().all().next(function(chunk) {
-				var cleanName = img.fileName.underclean();
-				sys.io.File.saveBytes("./statics/" + cleanName, chunk.toBytes());
-				return {name: cleanName};
-			});
-		else
-			return Promise.lift({name: null});
-	}
-
-	function saveSound(sound:Null<FormFile>):Promise<{name:String, length:Int}> {
-		if (sound != null)
-			return sound.read().all().next(function(chunk) {
-				var cleanSoundName = sound.fileName.underclean();
-				sys.io.File.saveBytes("./statics/" + cleanSoundName, chunk.toBytes());
-				return {name: cleanSoundName, length: chunk.length};
-			});
-		else
-			return Promise.lift({name: null, length: null});
+			.next(arg -> updateData(body.id, arg.sound.name, body.title, body.desc, arg.sound.length, arg.img.name)
+				.next(i -> up(cool, i)))
+			.recover(name -> {
+				up(pasCool);
+				return null;
+			} // throw 'upload $name failed'
+			);
 	}
 
 	function recData(name, title, desc, length:Int, img):Promise<Int> {
-		return dbApi.saveRec(name,title,desc,length,img);
+		return dbApi.saveRec(name, title, desc, length, img);
 	}
 
-	function updateData(id:Int,name, title, desc, length:Int, img):Promise<Int> {
-		
-        return dbApi.updateRec(id,name,title,desc,length,img);
-		
+	function updateData(id:Int, name, title, desc, length:Int, img):Promise<Int> {
+		return dbApi.updateRec(id, name, title, desc, length, img);
 	}
-
-
 }
