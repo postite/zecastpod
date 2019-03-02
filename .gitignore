@@ -1,6 +1,7 @@
 *.mp3
 /back/*
 /www/statics/*.jpg
+/www/statics/*.png
 /www/lib
 /matos
 /configPrivate
