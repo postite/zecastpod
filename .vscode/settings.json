@@ -12,7 +12,8 @@
             "dibase.db",
             "*.mp3",
             "*.jpg",
-            "*.png"
+            "*.png",
+            "statics/*"
             
         ],
         "sync-rsync.delete": false,

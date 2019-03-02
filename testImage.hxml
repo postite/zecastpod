@@ -1,5 +1,5 @@
 -cp src
-#-cp configPrivate
+-cp configPrivate
 -D analyzer-optimize
 #-lib hxnodejs
 #-lib tink_http

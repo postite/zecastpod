@@ -72,6 +72,12 @@ class DBApi{
         rec.insert();
     }
 
+    public function clean(){
+        var list=Rec.manager.search($id>2);
+        list.map(rec->rec.delete());
+        return true;
+    }
+
     static public function deleteTable(m:Class<sys.db.Object>){
         var manager= Reflect.field(m,"manager");
 		cnx.request('DROP TABLE '+manager.dbInfos().name);

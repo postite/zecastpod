@@ -112,6 +112,10 @@ class Root {
 		return getRssView();
 	}
 
+	@:get('/clean/')
+	public function clean()
+		return dbApi.clean();
+
 	@:produces('application/xml') // that line does nothing raise issue on tink_web ?
 	@:get('/rss')
 	public function getRss() {

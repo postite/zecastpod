@@ -2,7 +2,7 @@ class Tools{
 
 
     public static function underclean(str:String,separator:String="_"):String{
-    var extension=haxe.io.Path.extension(str).log();
+    var extension=haxe.io.Path.extension(str);
     str =haxe.io.Path.withoutExtension(str);
    //	str=~/[\.]/.replace(str,"alaplacedupoint");
     var nonWordChar= ~/[\xC0-\xFF\s\W]/g;

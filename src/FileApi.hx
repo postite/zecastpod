@@ -13,7 +13,7 @@ class FileApi{
 				return {name: cleanName};
 			})
 			.next(cleanNameObject->ImageApi.getResizedImage('statics/${cleanNameObject.name}'))
-			.next(path->{name:path.log()});
+			.next(path->{name:path});
 		else
 			return Promise.lift({name: null});
 	}
