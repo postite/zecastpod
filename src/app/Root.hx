@@ -1,40 +1,15 @@
-import tink.http.containers.*;
-import tink.http.Response;
-import tink.web.routing.*;
-import tink.http.middleware.Static;
-import tink.http.StructuredBody;
-
+package app;
+import apis.RssApi;
+import apis.DBApi;
+import apis.FileApi;
 using tink.CoreApi;
-
-import tink.http.Response;
-import sys.io.File;
 import tink.web.forms.FormFile;
-// import api.IRoot;
-import sys.FileSystem;
-
-using views.Layout;
-using Actor;
-
-import views.UpView;
+using wire.Actor;
 import command.*;
+import tink.http.Response;
+import views.UpView; //for status Enum;
 
-class Server {
-	static function main() {
-		#if php
-		var container = PhpContainer.inst;
-		#else
-		var container = new NodeContainer(8080);
-		#end
-		var router = new Router<Root>(new Root());
-		var handler:tink.http.Handler = function(req) {
-			return router.route(Context.ofRequest(req)).recover(OutgoingResponse.reportError);
-		}
-		handler = handler.applyMiddleware(new Static('./statics', '/'));
-		container.run(handler);
-	}
-}
-
-class Root {
+class Root implements app.IRemoteRoot {
 	var rssApi:RssApi;
 	var dbApi:DBApi;
 
@@ -42,14 +17,14 @@ class Root {
 		rssApi = new RssApi();
 
 		dbApi = DBApi.init();
-		Layout.instance.footer = views.Footer.render();
+		
 		var nav = [{
 			url: "/rss",
 			title: "abonne toi",
 			description: "le flux rss du podcast"
 		}];
-		Layout.instance.menu = views.Hello.render(nav);
-		Layout.instance.header = views.Header.render();
+		Actor.defaultLayout.menu = views.Menu.render(nav);
+		
 	}
 
 	@:get('/')
@@ -59,6 +34,16 @@ class Root {
 			.withLayout()
 			.addAction(MyCommand)
 			.addAction(MyCommand2, "bingo")
+			.render();
+	}
+	@:get('/layout2')
+	public function hello2():tink.template.Html {
+		var lay2=new views.Layout2();
+		lay2.menu=views.Menu.render([]);
+		return views.Home.render()
+			.withLayout(lay2)
+			.addAction(MyCommand)
+			.addAction(MyCommand2, "binga")
 			.render();
 	}
 
@@ -97,8 +82,11 @@ class Root {
 		var rss = rssApi.getRss();
 
 		var t = views.Coolrss.render(rss);
-		return t.withLayout().addAction(MyCommand2).render();
+		
+		return t.withLayout()
+		.addAction(MyCommand2).render();
 	}
+
 
 	@:get('/modif/$id')
 	public function modif(id:Int) {
@@ -144,6 +132,24 @@ class Root {
 		return new views.PodPage(sound).render().withLayout("podpage").render();
 	}
 
+	@:get('/cliup')
+	public function cliup(){
+		return  views.UpPage.render().withLayout()
+		.addAction(CliUp)
+		.render();
+	}
+
+	@:get('/paf')
+	public function paf():{arg:String}
+	{
+	   return {arg:"paf"};
+	}
+	@:post
+	public function uploadFile(body:{file:FormFile}):Promise<{name:String}>
+	{
+	   return FileApi.saveImg(body.file);
+	}
+
 	@:post
 	public function filesRec(body:{
 		fileToUpload:FormFile,
@@ -170,7 +176,7 @@ class Root {
 		?imgToUpload:Null<FormFile>,
 		desc:String,
 		title:String
-	}) {
+	}){
 		return FileApi.saveSound(body.fileToUpload)
 			.next(function(sound) return FileApi.saveImg(body.imgToUpload)
 				.next(img -> {sound: sound, img: img}))

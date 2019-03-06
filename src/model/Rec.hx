@@ -1,3 +1,4 @@
+package model;
 class Rec extends sys.db.Object {
 	
 	public var id:sys.db.Types.SId;

@@ -1,3 +1,4 @@
+package wire;
 
 abstract ActionCommand(String) from String to String{
 

@@ -1,4 +1,4 @@
-
+package app;
 class Consts{
 
     //public static var baseUrl:String="http://zecastpod.postite.com";
@@ -14,6 +14,7 @@ class Consts{
         #elseif js
         return js.Browser.window.location.host;
         #end
+        return null;
 
     }
 

@@ -1,5 +1,5 @@
--D image=0.1.1
-# @install: lix --silent download "gh://github.com/postite/image#e0b8afb8dfdce837d3b90c8c07c133cd641f241a" into image/0.1.1/github/e0b8afb8dfdce837d3b90c8c07c133cd641f241a
+-D image=0.2.0
+# @install: lix --silent download "gh://github.com/benmerckx/image#5936258c88f81cf176b41d1a2daf2dc85ca38f8b" into image/0.2.0/github/5936258c88f81cf176b41d1a2daf2dc85ca38f8b
 -lib tink_core
 -lib asys
--cp ${HAXE_LIBCACHE}/image/0.1.1/github/e0b8afb8dfdce837d3b90c8c07c133cd641f241a/src
+-cp ${HAXE_LIBCACHE}/image/0.2.0/github/5936258c88f81cf176b41d1a2daf2dc85ca38f8b/src

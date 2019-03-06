@@ -1,4 +1,4 @@
 using Log;
 #if php
-import Consts.*;
+import app.Consts.*;
 #end

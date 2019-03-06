@@ -1,4 +1,4 @@
-(:static function render(rss:Rss):)
+(:static function render(rss:model.Rss):)
 (: for item in rss.items :)
     <div class="item">
         <a href="/pod/(:item.id:)"><h4>(: item.title :)</h4></a>

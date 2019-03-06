@@ -1,3 +1,5 @@
+package apis;
+
 import asys.FileSystem;
 import image.Image;
 
@@ -40,7 +42,7 @@ class ImageApi {
 		return FileSystem.stat(path).next((st) -> st.mtime.getTime()).map(function(o) {
 			return switch (o) {
 				case Success(s): s;
-				case Failure(f): .0.log("opoloa");
+				case Failure(f): .0;
 			}
 		});
 	}

@@ -1,11 +1,11 @@
-
+--connect 6011
 -cp src
--dce full
+#-dce full
 -lib compiletime
 -lib tink_http
 -lib jQueryExtern
 -lib tink_web
--main Client
+-main app.Client
 -js www/statics/client.js
 
 --times

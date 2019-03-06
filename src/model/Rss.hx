@@ -1,3 +1,5 @@
+package model;
+
 typedef PodRss={
     title:String,
     logo:String,
@@ -42,8 +44,7 @@ typedef PodSound={
     ?length:Int
 }
 
-class Rss {
-
+class Rss{
 public var logo:String;
 public var title:String;
 public var url:String;
@@ -58,10 +59,11 @@ public var category:String;
 public var items:Array<PodRssItem>;
 
   public function new(  ) {
-    
     items = new Array();
   }
-@:template("views/rssTemplate.tt")
-public function render();// <---- this bit is new!
+
+@:template("../views/rssTemplate.tt")
+public function render();
+
 }
 

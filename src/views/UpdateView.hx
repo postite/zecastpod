@@ -1,5 +1,6 @@
 package views;
 import views.UpView;
+import model.Rec;
 using tink.CoreApi;
 
 

@@ -1,4 +1,5 @@
 package command;
+import wire.ICommand;
 @:keep
 class MyCommand2 implements ICommand{
 

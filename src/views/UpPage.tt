@@ -1,0 +1,9 @@
+(:static function render():)
+<div class="">
+    <form name="upload_form" enctype="multipart/form-data" action="">
+     <input name="uploaded-file" id="file-input" type="file" />
+     <div><img src="" alt="" id="preview"></div>
+    </form>
+    <button id='ok'>ok</button>
+    </div>
+(:end:)

@@ -12,7 +12,7 @@
 -lib image
 -lib hx3compat
 -lib record-macros
--main Server
+-main app.Server
 -js www/server.js
 #-cmd open -a safari http://localhost:8080
 

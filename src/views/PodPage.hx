@@ -1,5 +1,5 @@
 package views;
-
+import model.Rec;
 class PodPage{
 
     public var rec:Rec;

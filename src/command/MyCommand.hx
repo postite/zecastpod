@@ -1,4 +1,6 @@
 package command;
+import wire.ICommand;
+
 #if js
 import js.jquery.Helper.*;
 #end

@@ -16,6 +16,7 @@
                 "isDefault": true
             },
             "dependsOn": [
+                "buildClient",
                 "buildPhpServer"
             ]
         },
@@ -38,6 +39,9 @@
             "command": "haxe",
             "args": [
                 "client.hxml"
+            ],
+            "problemMatcher": [
+                "$haxe"
             ]
         },
         {

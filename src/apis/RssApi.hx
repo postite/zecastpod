@@ -1,4 +1,8 @@
+package apis;
+
+import model.Rss;
 import Credits.*;
+
 
 class RssApi {
 	public function new() {}
@@ -14,7 +18,7 @@ class RssApi {
 		rss.items = [];
 		var counter = 1;
 		DBApi.instance.getAll().map(function(it) {
-			var item:Rss.PodRssItem = cast {};
+			var item:PodRssItem = cast {};
 			item.id = it.id;
 			item.title = StringTools.htmlEscape(it.title);
 			item.description = StringTools.htmlEscape(it.desc);
@@ -47,7 +51,7 @@ class RssApi {
 		rss.items = [];
 
 		DBApi.instance.getAll().map(function(it) {
-			var item:Rss.PodRssItem = cast {};
+			var item:PodRssItem = cast {};
 			item.id = it.id;
 			item.title = StringTools.urlEncode(it.title);
 			item.description =  StringTools.urlEncode(it.desc);

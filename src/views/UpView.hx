@@ -1,4 +1,5 @@
 package views;
+import model.Rec;
 using tink.CoreApi;
 enum Status{
     Nib;
